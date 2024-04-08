@@ -1,0 +1,160 @@
+.container-navbar {
+    width: 100%;
+    height: 150px;
+    background-color: rgb(8, 52, 62);
+
+    flex-direction: column;
+}
+
+.top-navbar {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.title-navbar {
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* input */
+.input-navbar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 350px;
+}
+
+.input {
+    font-size: 20px;
+    padding: 5px 10px;
+    width: 100%;
+    height: 30px;
+    outline: none;
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    transition: .3s ease;
+}
+
+.input:focus {
+    background: #ffffff;
+    border: 1px solid #C7C7C7;
+    border-radius: 10px;
+}
+
+.input::placeholder {
+    color: #DDDDDD;
+}
+
+/* currency */
+.currency-navbar {
+    display: flex;
+    flex-direction: column;
+    border-right: 5px solid white;
+    height: 60px;
+    position: relative;
+    padding-right: 5px;
+}
+
+.currency-top {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-end;
+    gap: 5px;
+}
+
+.currency-bot {
+    height: 50%;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.currency-icon {
+    transform: rotate(180deg);
+}
+
+.currency-flag {
+    height: 20px;
+    align-content: flex-end;
+}
+
+.currency-text {
+    color: white;
+}
+
+.currency-menu {
+    position: absolute;
+    top: 110%;
+    width: 200px;
+    left: -70%;
+    background-color: #ffffff;
+}
+
+.cart-navbar {
+    color: white;
+    display: flex;
+    font-size: 40px;
+}
+
+.money-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.title-input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.bot-navbar {
+    height: 50px;
+    width: 100%;
+    border-top: 1px solid rgb(255, 255, 255);
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+}
+.categories-list{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    text-transform: uppercase;
+    height: 100%;
+}
+.categories-list > div {
+    border-right: 1px solid #ffffff;
+    padding: 0 10px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories-list > div:last-child {
+    border-right: none; 
+}

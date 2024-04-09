@@ -5,7 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
-export default function ProductsList() {
+export default function ProductsList({AddItemToCart}) {
     const [items, setItems] = useState();
 
     useEffect(() => {
@@ -28,6 +28,7 @@ export default function ProductsList() {
     function click() {
         console.log(items)
     }
+
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
             < AiFillStar />
@@ -69,7 +70,7 @@ export default function ProductsList() {
                                         </div>
                                     </div>
                                     <div className="right-cart">
-                                        <span className="cart-icon">< FiShoppingCart /></span>
+                                        <span onClick={() => AddItemToCart(item.id)} className="cart-icon">< FiShoppingCart /></span>
                                     </div>
                                 </div>
 

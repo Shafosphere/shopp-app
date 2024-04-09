@@ -3,17 +3,41 @@ import Navbar from "../navbar/navbar"
 import Banner from "../banner/banner"
 import ImageCarousel from "../image-carousel/carousel"
 import ProductsList from "../products/products"
-export default function Main(){
+import { useState } from "react"
+import Cart from "../cart/cart"
+
+export default function Main() {
+    const [displayCart, setDisplayCart] = useState(true);
+    const [cartItem, setCartItem] = useState([]);
+    function NavigateToCart() {
+        setDisplayCart(true);
+    }
+    function NavigateToMainPage() {
+        setDisplayCart(false);
+    }
+    function AddItemToCart(item) {
+        setCartItem(prevCart => [...prevCart, item]);
+    }
     return (
         <div className="container kantumruy">
             <div className="main-window">
-                <Navbar></Navbar>
-                <Banner></Banner>
-                <ImageCarousel></ImageCarousel>
-                <Banner></Banner>
-                <ImageCarousel></ImageCarousel>
-                <ProductsList></ProductsList>
+                <Navbar
+                    NavigateToMainPage={NavigateToMainPage}
+                    NavigateToCart={NavigateToCart}
+                    CartItems={cartItem.length}
+                />
+                {displayCart ? (
+                    <Cart CartItems={cartItem}/>
+                ) : (
+                    <>
+                        <Banner />
+                        <ImageCarousel />
+                        <Banner />
+                        <ImageCarousel />
+                        <ProductsList AddItemToCart={AddItemToCart}/>
+                    </>
+                )}
             </div>
-        </div>        
-    )
+        </div>
+    );
 }

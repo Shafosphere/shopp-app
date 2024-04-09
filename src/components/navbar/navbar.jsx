@@ -5,14 +5,14 @@ import { IoTriangle } from "react-icons/io5";
 import { PL } from 'country-flag-icons/react/3x2'
 import { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({NavigateToMainPage, NavigateToCart, CartItems}) {
     return (
         <div className="container-navbar">
             <div className="top-navbar">
 
                 <div className="title-input-container">
                     {/* title */}
-                    <div className="title-navbar">SHOPP APP</div>
+                    <div onClick={NavigateToMainPage} className="title-navbar">SHOPP APP</div>
                     {/* input */}
                     <div className="input-navbar">
                         <input className="input" type="text" placeholder="I want..." />
@@ -23,8 +23,8 @@ export default function Navbar() {
                     {/* currency */}
                         <CurrencyNavbar />
                     {/* cart */}
-                    <div className="cart-navbar">
-                        <FiShoppingCart />
+                    <div onClick={NavigateToCart} className="cart-navbar">
+                        <FiShoppingCart /> {CartItems}
                     </div>
                 </div>
 

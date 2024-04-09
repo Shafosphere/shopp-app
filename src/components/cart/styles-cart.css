@@ -1,0 +1,123 @@
+.container-cart {
+    min-height: 100vh;
+}
+
+.main-cart {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(234, 255, 113, 1);
+    background-image: linear-gradient(92deg, rgba(234, 255, 113, 1) 16%, rgba(140, 240, 149, 1) 56%);
+}
+
+.cart-list {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid rgba(105, 105, 105, 0.432);
+    height: 400px;
+}
+
+.cart-check {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.cart-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 87%;
+    height: 100%;
+}
+
+.cart-content-top {
+    height: 272px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-image {
+    height: 272px;
+    width: 272px;
+    
+}
+
+.cart-image img {
+    height: 272px;
+    width: 272px;
+    
+    object-fit: cover;
+}
+
+.cart-data {
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+.cart-data-top{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.cart-data-price{
+    font-size: 45px;
+    padding-left: 1rem;
+    font-weight: 500;
+}
+.cart-data-brand{
+    font-size: 20px;
+    padding-left: 1rem;
+    font-weight: 500;
+}
+.check-gift{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    gap: 5px;
+}
+.gift-icon{
+    padding-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-trash{
+    font-size: 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    width: 150px;
+}
+.order-summary {
+    background-color: white;
+    display: flex;
+    width: 300px;
+    min-height: 500px;
+}
+.cart-content-bot {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+.cart-description{
+    font-weight: 500;
+}

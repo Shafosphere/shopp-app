@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./products.css"
 import { GiHamburgerMenu } from "react-icons/gi";
+import { FiShoppingCart } from "react-icons/fi";
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
 
 export default function ProductsList() {
     const [items, setItems] = useState();
@@ -25,7 +28,17 @@ export default function ProductsList() {
     function click() {
         console.log(items)
     }
-
+    function rating(rating) {
+        const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
+            < AiFillStar />
+        ));
+        if (stars.length < 5) {
+            stars.push(
+                <AiOutlineStar />
+            )
+        }
+        return <>{stars}</>;
+    }
     function Elements() {
         if (items) {
             return (
@@ -34,11 +47,35 @@ export default function ProductsList() {
                         <div key={index} className="items-container">
                             <div className="item-top">
                                 <img alt={item.title} src={item.thumbnail} />
+                                <div className="item-top-bot">
+                                    <div className="item-top-triangle"></div>
+                                    <div className="top-discount">
+                                        {Math.floor(item.discountPercentage)}%
+                                    </div>
+                                    <div className="top-stocks">
+                                        <span className="card-padding">cheaper</span>
+                                        <span className="card-padding">{item.stock} left</span>
+                                    </div>
+                                </div>
                             </div>
                             <div className="item-bot" >
-                                <span>{item.title}</span>
-                                <span>{item.rating}</span>
-                                <span>{item.price}</span>
+                                <div className="item-bot-top">
+                                    <div className="left-cart">
+                                        <div className="left-cart-top">
+                                            <span className="card-padding">{item.title}</span>
+                                        </div>
+                                        <div className="left-cart-bot">
+                                            <div className="card-padding">{rating(item.rating)}</div>
+                                        </div>
+                                    </div>
+                                    <div className="right-cart">
+                                        <span className="cart-icon">< FiShoppingCart /></span>
+                                    </div>
+                                </div>
+
+                                <div className="item-bot-bottom">
+                                    <span className="card-padding">{item.price} $</span>
+                                </div>
                             </div>
                         </div>
 
@@ -48,6 +85,7 @@ export default function ProductsList() {
         }
         return null;
     }
+
     return (
         <div className="container-products">
             <div className="main-products">

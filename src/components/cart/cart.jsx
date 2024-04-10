@@ -1,79 +1,58 @@
 import "./styles-cart.css"
-import { FaCheckSquare, FaRegCheckSquare } from "react-icons/fa";
-import { CiTrash } from "react-icons/ci";
-
+import { useEffect, useState } from "react";
+import OrderSummary from "./cart-order-summary";
+import ListItems from "./cart-list-items";
 export default function Cart({ CartItems }) {
+    const [CartData, setCart] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalDiscount, setDiscount] = useState(0);
 
-
-
-    function getHTMLcode(price, brand, description) {
-        return (
-
-            <div className="cart-item">
-                <div className="cart-check">
-                    <FaCheckSquare />
-                </div>
-                <div className="cart-content">
-                    <div className="cart-content-top">
-                        <div className="cart-image">
-                            <img src="https://cdn.dummyjson.com/product-images/8/thumbnail.jpg" />
-                        </div>
-                        <div className="cart-data">
-                            <div className="cart-data-top">
-                                <span className="cart-data-price">{price}</span>
-                                <span className="cart-data-brand">BRAND: {brand}</span>
-                            </div>
-
-                            <div className="check-gift">
-                                <span className="gift-icon"><FaCheckSquare /></span> <spam>Order as a gift</spam>
-                            </div>
-                        </div>
-                        <div className="cart-trash">
-                            <CiTrash />
-                        </div>
-                    </div>
-                    <div className="cart-content-bot">
-                        <span className="cart-description">{description}</span>
-                    </div>
-                </div>
-            </div>
-
-        )
-    }
-
-    async function getList(id) {
-        try {
-            const itemData = await fetchItemData(id);
-            return getHTMLcode(itemData.price, itemData.brand, itemData.description);
-        } catch (error) {
-            console.error('Error, cannot fetch or process item data:', error);
-        }
-    }
-
-    async function fetchItemData(id) {
-        try {
-            const localdata = await fetch(
-                `https://dummyjson.com/products/${id}`
+    useEffect(() => {
+        async function fetchAllItemData() {
+            const fetchedData = await Promise.all(
+                CartItems.map((item) => fetchItemData(item))
             );
-            const jsonData = await localdata.json();
-            return jsonData;
-        } catch (error) {
-            console.error('Error, cannot take data:', error);
+            setCart(fetchedData.filter((data) => data !== null));
         }
-    }
+        async function fetchItemData(id) {
+            try {
+                const localdata = await fetch(
+                    `https://dummyjson.com/products/${id}`
+                );
+                return localdata.json();
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return null;
+            }
+        }
+        if (CartItems.length > 0) {
+            fetchAllItemData();
+        }
+    }, [CartItems]);
+
+    useEffect(() => {
+        function updateTotalPrice() {
+            let localPrice = 0;
+            let localDiscount = 0;
+            for (const item of CartData) {
+                localPrice += item.price;
+                localDiscount += (((item.price * (100 + item.discountPercentage)) / 100) - item.price)
+            }
+            setTotalPrice(localPrice);
+            setDiscount(localDiscount.toFixed(2))
+            console.log(totalPrice);
+        }
+        updateTotalPrice();
+    }, [CartData, totalPrice]);
+
+
 
     return (
         <div className="container-cart">
             <div className="main-cart">
-                <div className="cart-list">
-                    {CartItems.map((item, index) => (
-                        <div key={index}>
-                            {getList(item)}
-                        </div>
-                    ))}
-                </div>
+                    <ListItems CartData={CartData}></ListItems>
                 <div className="order-summary">
-
+                    <OrderSummary CartData={CartData} totalDiscount={totalDiscount} totalPrice={totalPrice} ></OrderSummary>
                 </div>
 
             </div>

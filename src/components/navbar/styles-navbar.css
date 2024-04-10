@@ -1,10 +1,14 @@
 .container-navbar {
-    width: 100%;
+    width: 1200px;
     height: 150px;
     background-color: rgb(8, 52, 62);
-
     flex-direction: column;
-}
+  
+    /* Key CSS for the sticky behavior */
+    position: fixed; 
+    top: 0;
+    z-index: 1000; /* Ensures navbar stays on top */
+  }
 
 .top-navbar {
     height: 100px;
@@ -97,18 +101,6 @@
     align-content: flex-end;
 }
 
-.currency-text {
-    color: white;
-}
-
-.currency-menu {
-    position: absolute;
-    top: 110%;
-    width: 200px;
-    left: -70%;
-    background-color: #ffffff;
-}
-
 .cart-navbar {
     color: white;
     display: flex;
@@ -161,4 +153,45 @@
 
 .categories-list > div:last-child {
     border-right: none; 
+}
+
+
+.currency-menu {
+    position: absolute;
+
+    top: 80%;
+    width: 200px;
+    left: -60%;
+
+}
+.currency-menu-window{
+    background-color:  rgb(8, 52, 62);
+    display: flex;
+    flex-direction: column;
+    border: solid 1px wheat;
+    gap: 5px;
+    padding: 1rem;
+    width: 125px;
+}
+.currency-menu-items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+}
+.currency-text {
+    color: white;
+}
+.currency-text:hover { 
+    color: wheat;
+} 
+
+.categories-navbar{
+    position: relative;
+}
+.category-menu {
+    position: absolute;
+    top: 100%;
+    width: 200px;
+    /* left: -60%; */
+    background: violet;
 }

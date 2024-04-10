@@ -7,8 +7,10 @@ import { useState } from "react"
 import Cart from "../cart/cart"
 
 export default function Main() {
-    const [displayCart, setDisplayCart] = useState(true);
+    const [displayCart, setDisplayCart] = useState(false);
     const [cartItem, setCartItem] = useState([]);
+    const [currency, setCurrency] = useState('$')
+
     function NavigateToCart() {
         setDisplayCart(true);
     }
@@ -26,6 +28,7 @@ export default function Main() {
                     NavigateToCart={NavigateToCart}
                     CartItems={cartItem.length}
                 />
+                <div className="underNavbar"/>
                 {displayCart ? (
                     <Cart CartItems={cartItem}/>
                 ) : (

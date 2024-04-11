@@ -1,0 +1,139 @@
+.container-search{
+    background-color: rgba(234, 255, 113, 1);
+    background-image: linear-gradient(92deg, rgba(234, 255, 113, 1) 16%, rgba(140, 240, 149, 1) 56%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.item-search{
+    width: 600px;
+    height: 300px;
+    background-color: azure;
+    display: flex;
+    flex-direction: row;
+}
+.left-search{
+    height: 300px;
+    width: 230px;
+}
+.left-search img{
+    height: 300px;
+    width: 230px;
+    object-fit: cover;
+}
+.right-search{
+    width: 370px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.right-search-top{
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+}
+.search-prices{
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-names{
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.search-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+.search-brand{
+    font-weight: 400;
+    font-size: 15px;
+}
+.search-rating{
+    height: 25%;
+    display: flex;
+}
+.rating-container{
+    width: 100%;
+}
+.search-stars{
+    font-size: 30px;
+    display: flex;
+    justify-content: end;
+}
+.rating-number{
+    display: flex;
+    justify-content: end;
+    font-size: 15px;
+    padding-right: 5px;
+    font-weight: 600;
+}
+.prices-left{
+    display: flex;
+    flex-direction: column;
+}
+.prices-left-bot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+.prices-left-top{
+    color: orange;
+    font-size: 50px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+.prices-discount{
+    text-decoration: line-through;
+    font-size: 20px;
+    align-items: center;
+    display: flex;
+}
+.prices-discount-percent{
+    display: flex;
+    flex-direction: column;
+}
+.percent-top{
+    font-size: 20px;
+    font-weight: 700;
+    color: red;
+}
+.percent-bot{
+    font-size: 13px;
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+.cart-right{
+    font-size: 70px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+.prices-padding{
+    padding-left: 10px;
+}
+.right-search-bot{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 2px solid rgba(0, 0, 0, 0.13);
+}
+.search-description{
+    display: flex;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

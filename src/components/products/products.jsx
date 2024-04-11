@@ -25,10 +25,6 @@ export default function ProductsList({AddItemToCart}) {
         }
     }
 
-    function click() {
-        console.log(items)
-    }
-
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
             < AiFillStar />
@@ -91,7 +87,7 @@ export default function ProductsList({AddItemToCart}) {
         <div className="container-products">
             <div className="main-products">
                 <div className="products-top">
-                    <span onClick={click} className="products-menu"> list <GiHamburgerMenu /> </span>
+                    <span className="products-menu"> list <GiHamburgerMenu /> </span>
                 </div>
                 <div className="products-bot">
                     <Elements />

@@ -5,8 +5,27 @@ import { IoTriangle } from "react-icons/io5";
 import { PL, US, GB } from 'country-flag-icons/react/3x2'
 import { useEffect, useState } from "react";
 
-export default function Navbar({ NavigateToMainPage, NavigateToCart, CartItems }) {
+export default function Navbar({ NavigateToView , CartItems }) {
 const[categoriesData, setCatData] = useState([]);
+
+
+useEffect(() => {
+    fetchItemData();
+}, []);
+
+async function fetchItemData() {
+    try {
+        const localdata = await fetch(
+            'https://dummyjson.com/products/categories'
+        );
+        const jsonData = await localdata.json();
+        setCatData(jsonData);
+    }
+    catch (error) {
+        console.error('Error, cannot take data:', error);
+    }
+}
+
 
     return (
         <div className="container-navbar">
@@ -14,7 +33,7 @@ const[categoriesData, setCatData] = useState([]);
 
                 <div className="title-input-container">
                     {/* title */}
-                    <div onClick={NavigateToMainPage} className="title-navbar">SHOPP APP</div>
+                    <div onClick={() => NavigateToView('main')} className="title-navbar">SHOPP APP</div>
                     {/* input */}
                     <div className="input-navbar">
                         <input className="input" type="text" placeholder="I want..." />
@@ -25,7 +44,7 @@ const[categoriesData, setCatData] = useState([]);
                     {/* currency */}
                     <CurrencyNavbar />
                     {/* cart */}
-                    <div onClick={NavigateToCart} className="cart-navbar">
+                    <div onClick={() => NavigateToView('cart')} className="cart-navbar">
                         <FiShoppingCart /> {CartItems}
                     </div>
                 </div>
@@ -34,7 +53,7 @@ const[categoriesData, setCatData] = useState([]);
 
 
             <div className="bot-navbar">
-                <CategoriesNavbar/>
+                <CategoriesNavbar NavigateToView={NavigateToView} categoriesData={categoriesData}/>
                 <div className="categories-list">
                     <div className="">smartphones </div>
                     <div className="">laptops</div>
@@ -49,7 +68,7 @@ const[categoriesData, setCatData] = useState([]);
 }
 
 
-function CategoriesNavbar() {
+function CategoriesNavbar({categoriesData, NavigateToView}) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     function handleMenuClick() {
         setIsMenuOpen(true);
@@ -58,12 +77,19 @@ function CategoriesNavbar() {
         setIsMenuOpen(false);
     }
 
+    
     return (
         <div onMouseOver={handleMenuClick} className="categories-navbar">
             CATEGORIES
             {isMenuOpen && (
-                <div onMouseOver={handleMenuClick} onMouseOut={handleMouseOut} className="category-menu">
-                    one
+                <div>
+                    {categoriesData && (
+                        <div onMouseOver={handleMenuClick} onMouseOut={handleMouseOut} className="category-menu">  
+                            {categoriesData.map((item, index)=>(
+                                <div key={index} onClick={() => NavigateToView('search', {item})} className="category-menu-item">{item}</div>
+                            ))}
+                        </div>
+                    )} 
                 </div>
             )}
         </div>
@@ -78,6 +104,7 @@ function CurrencyNavbar() {
     function handleMouseOut() {
         setIsMenuOpen(false);
     }
+
     return (
         <div className="currency-navbar">
             <div className="currency-top">

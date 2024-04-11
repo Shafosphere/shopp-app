@@ -34,7 +34,7 @@ export default function Main() {
                 />
                 <div className="underNavbar" />
                 {view === "cart" && <Cart CartItems={cartItem} />}
-                {view === "search" && <SearchResult searchItem={searchItem}/>}
+                {view === "search" && <SearchResult searchItem={searchItem} AddItemToCart={AddItemToCart}/>}
                 {view === "main" && (
                     <>
                         <Banner />

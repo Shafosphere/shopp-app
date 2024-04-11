@@ -49,13 +49,18 @@ export default function Cart({ CartItems }) {
 
     return (
         <div className="container-cart">
-            <div className="main-cart">
+            {CartData.length > 0 ? (
+                <div className="main-cart">
                     <ListItems CartData={CartData}></ListItems>
-                <div className="order-summary">
-                    <OrderSummary CartData={CartData} totalDiscount={totalDiscount} totalPrice={totalPrice} ></OrderSummary>
+                    <div className="order-summary">
+                        <OrderSummary CartData={CartData} totalDiscount={totalDiscount} totalPrice={totalPrice} ></OrderSummary>
+                    </div>
                 </div>
-
-            </div>
+            ) : (
+                <div className="empty-cart">
+                    Cart: Empty. You: Hero. Let’s save the day by adding some goodies!
+                </div>
+            )}
         </div>
     )
 }

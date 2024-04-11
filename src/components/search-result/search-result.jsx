@@ -4,7 +4,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import "./styles-search-result.css"
 
-export default function SearchResult({ searchItem }) {
+export default function SearchResult({ searchItem, AddItemToCart }) {
     const [localData, setData] = useState();
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function SearchResult({ searchItem }) {
             <div className="container-search">
 
                 {localData.products.map((item, index) => (
-                    <Test key={index} item={item} index={index} />
+                    <Item AddItemToCart={AddItemToCart} key={index} item={item} index={index} />
                 ))}
 
             </div>
@@ -36,7 +36,7 @@ export default function SearchResult({ searchItem }) {
     }
 }
 
-function Test({ item, index }) {
+function Item({ item, index, AddItemToCart }) {
     let newPrice = (item.price.toFixed(2))
     let localDiscount = (((item.price * (100 + item.discountPercentage)) / 100))
     function rating(rating) {
@@ -70,7 +70,7 @@ function Test({ item, index }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="cart-right">
+                        <div onClick={() => AddItemToCart(item.id)} className="cart-right">
                             <FiShoppingCart />
                         </div>
                     </div>

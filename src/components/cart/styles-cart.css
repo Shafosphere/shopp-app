@@ -233,3 +233,16 @@
     font-weight: 600;
     color: orange;
 }
+.empty-cart{
+    background-color: rgba(234, 255, 113, 1);
+    background-image: linear-gradient(92deg, rgba(234, 255, 113, 1) 16%, rgba(140, 240, 149, 1) 76%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    font-weight: 900;
+    width: 100%;
+    height: 300px;
+    margin-top: 5rem;
+}

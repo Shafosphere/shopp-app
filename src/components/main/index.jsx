@@ -17,9 +17,26 @@ export default function Main() {
 
     function navigateToView(view, item) {
         setView(view);
-        if(item){
+        if (item) {
             setItem(item);
         }
+    }
+    function currencyExchange(item) {
+        let convertedItem;
+        switch (currency) {
+            case '£':
+                convertedItem = (item * 0.8).toFixed(2);
+                break;
+            case 'zł':
+                convertedItem = (item * 4).toFixed(2);
+                break;
+            default:
+                convertedItem = item.toFixed(2);
+        }
+        return `${convertedItem} ${currency}`;
+    }
+    function switchCurrency(item) {
+        setCurrency(item);
     }
 
     function AddItemToCart(item) {
@@ -29,19 +46,25 @@ export default function Main() {
         <div className="container kantumruy">
             <div className="main-window">
                 <Navbar
+                    currency={currency}
                     NavigateToView={navigateToView}
+                    switchCurrency={switchCurrency}
                     CartItems={cartItem.length}
                 />
                 <div className="underNavbar" />
-                {view === "cart" && <Cart CartItems={cartItem} />}
-                {view === "search" && <SearchResult searchItem={searchItem} AddItemToCart={AddItemToCart}/>}
+                {view === "cart" && <Cart CartItems={cartItem} currencyExchange={currencyExchange}/>}
+                {view === "search" && <SearchResult
+                    currencyExchange={currencyExchange}
+                    searchItem={searchItem}
+                    AddItemToCart={AddItemToCart}
+                />}
                 {view === "main" && (
                     <>
                         <Banner />
                         <ImageCarousel />
                         <Banner />
                         <ImageCarousel />
-                        <ProductsList AddItemToCart={AddItemToCart} />
+                        <ProductsList currencyExchange={currencyExchange} AddItemToCart={AddItemToCart} />
                     </>
                 )}
             </div>

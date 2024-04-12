@@ -4,7 +4,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import "./styles-search-result.css"
 
-export default function SearchResult({ searchItem, AddItemToCart }) {
+export default function SearchResult({ searchItem, AddItemToCart, currencyExchange }) {
     const [localData, setData] = useState();
 
     useEffect(() => {
@@ -12,9 +12,11 @@ export default function SearchResult({ searchItem, AddItemToCart }) {
     }, [searchItem]);
 
     async function fetchItemData() {
+        let checkItem = searchItem.item;
+        if(checkItem == undefined){checkItem = searchItem}
         try {
             const localdata = await fetch(
-                `https://dummyjson.com/products/category/${searchItem.item}`
+                `https://dummyjson.com/products/category/${checkItem}`
             );
             const jsonData = await localdata.json();
             setData(jsonData);
@@ -28,7 +30,7 @@ export default function SearchResult({ searchItem, AddItemToCart }) {
             <div className="container-search">
 
                 {localData.products.map((item, index) => (
-                    <Item AddItemToCart={AddItemToCart} key={index} item={item} index={index} />
+                    <Item AddItemToCart={AddItemToCart} currencyExchange={currencyExchange} key={index} item={item} index={index}/>
                 ))}
 
             </div>
@@ -36,8 +38,7 @@ export default function SearchResult({ searchItem, AddItemToCart }) {
     }
 }
 
-function Item({ item, index, AddItemToCart }) {
-    let newPrice = (item.price.toFixed(2))
+function Item({ item, AddItemToCart, currencyExchange }) {
     let localDiscount = (((item.price * (100 + item.discountPercentage)) / 100))
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
@@ -60,7 +61,7 @@ function Item({ item, index, AddItemToCart }) {
                     <div className="search-prices ">
                         <div className="prices-left ">
                             <div className="prices-left-top prices-padding">
-                                <span>{newPrice} $</span>
+                                <span>{currencyExchange(item.price)}</span>
                             </div>
                             <div className="prices-left-bot">
                                 <div className="prices-discount prices-padding">{localDiscount.toFixed(2)} $</div>

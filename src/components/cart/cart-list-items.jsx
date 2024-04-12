@@ -1,6 +1,6 @@
 import { FaCheckSquare, FaRegCheckSquare } from "react-icons/fa";
 import { CiTrash } from "react-icons/ci";
-export default function ListItems({CartData}) {
+export default function ListItems({CartData, currencyExchange}) {
 
     function getCartItems(price, brand, description, thumbnail, title) {
         return (
@@ -16,7 +16,7 @@ export default function ListItems({CartData}) {
                             </div>
                             <div className="cart-data">
                                 <div className="cart-data-top">
-                                    <span className="cart-data-price">{price} $</span>
+                                    <span className="cart-data-price">{currencyExchange(price)}</span>
                                     <span className="cart-data-title">{title}</span>
                                     <span className="cart-data-brand">by: {brand}</span>
                                 </div>

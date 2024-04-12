@@ -5,7 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
-export default function ProductsList({AddItemToCart}) {
+export default function ProductsList({AddItemToCart, currencyExchange}) {
     const [items, setItems] = useState();
 
     useEffect(() => {
@@ -36,6 +36,7 @@ export default function ProductsList({AddItemToCart}) {
         }
         return <>{stars}</>;
     }
+    
     function Elements() {
         if (items) {
             return (
@@ -71,7 +72,7 @@ export default function ProductsList({AddItemToCart}) {
                                 </div>
 
                                 <div className="item-bot-bottom">
-                                    <span className="card-padding">{item.price} $</span>
+                                    <span className="card-padding">{currencyExchange(item.price)}</span>
                                 </div>
                             </div>
                         </div>

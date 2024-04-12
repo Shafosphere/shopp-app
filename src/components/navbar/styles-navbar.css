@@ -98,6 +98,7 @@
 
 .currency-flag {
     height: 20px;
+    width: 30px;
     align-content: flex-end;
 }
 
@@ -109,7 +110,10 @@
     gap: 5px;
     cursor: pointer;
 }
-
+.cart-navbar-icon{
+    height: 40px;
+    width: 40px;
+}
 .money-navbar {
     display: flex;
     flex-direction: row;
@@ -178,10 +182,12 @@
 .currency-menu-items{
     display: flex;
     flex-direction: row;
-    justify-content: space-around
+    justify-content: space-around;
+    cursor: pointer;
 }
 .currency-text {
     color: white;
+    width: 75px;
 }
 .currency-text:hover { 
     color: wheat;

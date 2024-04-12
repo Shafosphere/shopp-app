@@ -56,10 +56,10 @@ export default function Navbar({ NavigateToView, CartItems, switchCurrency, curr
             <div className="bot-navbar">
                 <CategoriesNavbar NavigateToView={NavigateToView} categoriesData={categoriesData} />
                 <div className="categories-list">
-                    <div onClick={() => NavigateToView('search', 'smartphones')} className="">smartphones </div>
-                    <div onClick={() => NavigateToView('search', 'laptops')} className="">laptops</div>
-                    <div onClick={() => NavigateToView('search', 'skincare')} className="">skincare</div>
-                    <div onClick={() => NavigateToView('search', 'furniture')} className="">furniture</div>
+                    <div onClick={() => NavigateToView('search', { category: 'smartphones' })} className="">smartphones </div>
+                    <div onClick={() => NavigateToView('search', { category: 'laptops' })} className="">laptops</div>
+                    <div onClick={() => NavigateToView('search', { category: 'skincare' })} className="">skincare</div>
+                    <div onClick={() => NavigateToView('search', { category: 'furniture' })} className="">furniture</div>
                 </div>
 
             </div>
@@ -87,7 +87,7 @@ function CategoriesNavbar({ categoriesData, NavigateToView }) {
                     {categoriesData && (
                         <div onMouseOver={handleMenuClick} onMouseOut={handleMouseOut} className="category-menu">
                             {categoriesData.map((item, index) => (
-                                <div key={index} onClick={() => NavigateToView('search', { item })} className="category-menu-item">{item}</div>
+                                <div key={index} onClick={() => NavigateToView('search', { category: item })} className="category-menu-item">{item}</div>
                             ))}
                         </div>
                     )}

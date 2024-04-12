@@ -4,19 +4,19 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import "./styles-search-result.css"
 
-export default function SearchResult({ searchItem, AddItemToCart, currencyExchange }) {
+export default function SearchResult({ searchCategory, AddItemToCart, currencyExchange }) {
     const [localData, setData] = useState();
 
     useEffect(() => {
         fetchItemData();
-    }, [searchItem]);
+    }, [searchCategory]);
 
     async function fetchItemData() {
-        let checkItem = searchItem.item;
-        if(checkItem == undefined){checkItem = searchItem}
+        let checkCategory = searchCategory.item;
+        if(checkCategory == undefined){checkCategory = searchCategory}
         try {
             const localdata = await fetch(
-                `https://dummyjson.com/products/category/${checkItem}`
+                `https://dummyjson.com/products/category/${checkCategory}`
             );
             const jsonData = await localdata.json();
             setData(jsonData);
@@ -64,7 +64,7 @@ function Item({ item, AddItemToCart, currencyExchange }) {
                                 <span>{currencyExchange(item.price)}</span>
                             </div>
                             <div className="prices-left-bot">
-                                <div className="prices-discount prices-padding">{localDiscount.toFixed(2)} $</div>
+                                <div className="prices-discount prices-padding">{currencyExchange(localDiscount)} $</div>
                                 <div className="prices-discount-percent">
                                     <span className="percent-top">{item.discountPercentage} %</span>
                                     <span className="percent-bot">lower</span>

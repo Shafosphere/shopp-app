@@ -39,7 +39,7 @@ export default function Cart({ CartItems, currencyExchange}) {
                 localDiscount += (((item.price * (100 + item.discountPercentage)) / 100) - item.price)
             }
             setTotalPrice(localPrice);
-            setDiscount(localDiscount.toFixed(2))
+            setDiscount(localDiscount)
             console.log(totalPrice);
         }
         updateTotalPrice();
@@ -53,7 +53,7 @@ export default function Cart({ CartItems, currencyExchange}) {
                 <div className="main-cart">
                     <ListItems currencyExchange={currencyExchange} CartData={CartData}></ListItems>
                     <div className="order-summary">
-                        <OrderSummary CartData={CartData} totalDiscount={totalDiscount} totalPrice={totalPrice} ></OrderSummary>
+                        <OrderSummary currencyExchange={currencyExchange} CartData={CartData} totalDiscount={totalDiscount} totalPrice={totalPrice} ></OrderSummary>
                     </div>
                 </div>
             ) : (

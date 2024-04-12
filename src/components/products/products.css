@@ -73,6 +73,7 @@
     height: 250px;
     width: 300px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .top-discount {
@@ -141,6 +142,12 @@
     align-items: center;
     cursor: pointer;
     width: 35%;
+}
+.right-cart:hover{
+    color: orange;
+}
+.right-cart:active svg {
+    transform: scale(95%);
 }
 
 .cart-icon {

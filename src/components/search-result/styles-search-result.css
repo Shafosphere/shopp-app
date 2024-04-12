@@ -69,12 +69,13 @@
     font-size: 30px;
     display: flex;
     justify-content: end;
+    padding-right: 15px;
 }
 .rating-number{
     display: flex;
     justify-content: end;
     font-size: 15px;
-    padding-right: 5px;
+    padding-right: 20px;
     font-weight: 600;
 }
 .prices-left{

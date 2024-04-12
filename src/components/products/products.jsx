@@ -5,7 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
-export default function ProductsList({AddItemToCart, currencyExchange}) {
+export default function ProductsList({AddItemToCart, currencyExchange, navigateToView}) {
     const [items, setItems] = useState();
 
     useEffect(() => {
@@ -44,7 +44,7 @@ export default function ProductsList({AddItemToCart, currencyExchange}) {
                     {items.products.map((item, index) => (
                         <div key={index} className="items-container">
                             <div className="item-top">
-                                <img alt={item.title} src={item.thumbnail} />
+                                <img onClick={() => navigateToView('id', { id: item.id })} alt={item.title} src={item.thumbnail} />
                                 <div className="item-top-bot">
                                     <div className="item-top-triangle"></div>
                                     <div className="top-discount">

@@ -4,21 +4,26 @@ import Banner from "../banner/banner"
 import ImageCarousel from "../image-carousel/carousel"
 import ProductsList from "../products/products"
 import SearchResult from "../search-result/search-result"
+import SingleItem from "../single-item/single-item"
 import { useState } from "react"
 import Cart from "../cart/cart"
 
 export default function Main() {
 
-    const [view, setView] = useState("main");
-
+    const [view, setView] = useState("id");
     const [cartItem, setCartItem] = useState([]);
     const [currency, setCurrency] = useState('$');
-    const [searchItem, setItem] = useState();
-
+    const [searchCategory, setCategory] = useState();
+    const[searchId, setId] = useState();
     function navigateToView(view, item) {
         setView(view);
-        if (item) {
-            setItem(item);
+        if (item && typeof item === 'object') {
+            if ('category' in item) {
+                setCategory(item.category);
+            }
+            if ('id' in item) {
+                setId(item.id);
+            }
         }
     }
     function currencyExchange(item) {
@@ -52,10 +57,10 @@ export default function Main() {
                     CartItems={cartItem.length}
                 />
                 <div className="underNavbar" />
-                {view === "cart" && <Cart CartItems={cartItem} currencyExchange={currencyExchange}/>}
+                {view === "cart" && <Cart CartItems={cartItem} currencyExchange={currencyExchange} />}
                 {view === "search" && <SearchResult
                     currencyExchange={currencyExchange}
-                    searchItem={searchItem}
+                    searchCategory={searchCategory}
                     AddItemToCart={AddItemToCart}
                 />}
                 {view === "main" && (
@@ -64,7 +69,12 @@ export default function Main() {
                         <ImageCarousel />
                         <Banner />
                         <ImageCarousel />
-                        <ProductsList currencyExchange={currencyExchange} AddItemToCart={AddItemToCart} />
+                        <ProductsList navigateToView={navigateToView} currencyExchange={currencyExchange} AddItemToCart={AddItemToCart} />
+                    </>
+                )}
+                {view === "id" && (
+                    <>
+                        <SingleItem searchId={searchId}></SingleItem>
                     </>
                 )}
             </div>

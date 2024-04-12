@@ -1,17 +1,17 @@
-export default function OrderSummary({ CartData, totalDiscount, totalPrice, updatePrice }) {
+export default function OrderSummary({ currencyExchange, CartData, totalDiscount, totalPrice, updatePrice }) {
 
     function orderItem(index, title, price, discount) {
-        let priceDiscountBefore = ((price * (100 + discount)) / 100).toFixed(2)
+        let priceDiscountBefore = ((price * (100 + discount)) / 100)
         return (
             <div key={index} className="order-item">
                 <div className="order-name">{title}</div>
                 <div className="order-price">
                     <span>normal price</span>
                     <span className="dot"></span>
-                    <span className="order-price-number">{priceDiscountBefore}</span>
+                    <span className="order-price-number">{currencyExchange(priceDiscountBefore)}</span>
                 </div>
                 <div className="order-discount">
-                    <div className="order-price-discount">{price} $</div>
+                    <div className="order-price-discount">{currencyExchange(price)}</div>
                 </div>
             </div>
         )
@@ -28,11 +28,11 @@ export default function OrderSummary({ CartData, totalDiscount, totalPrice, upda
                     <div className="summary-top-items">
                         <span>TOTAL ({CartData.length} items)</span>
                         <span className="dot"></span>
-                        <span>{totalPrice} $</span>
+                        <span>{currencyExchange(totalPrice)}</span>
                     </div>
                 </div>
                 <div className="summary-bot">
-                    <span>Saving {totalDiscount} $</span>
+                    <span>Saving {currencyExchange(totalDiscount)}</span>
                 </div>
             </div>
             <div className="order-button-container">

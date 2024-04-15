@@ -14,7 +14,7 @@ export default function Main() {
     const [cartItem, setCartItem] = useState([]);
     const [currency, setCurrency] = useState('$');
     const [searchCategory, setCategory] = useState();
-    const[searchId, setId] = useState();
+    const [searchId, setId] = useState();
     function navigateToView(view, item) {
         setView(view);
         if (item && typeof item === 'object') {
@@ -47,6 +47,13 @@ export default function Main() {
     function AddItemToCart(item) {
         setCartItem(prevCart => [...prevCart, item]);
     }
+
+    function RemoveItemFromCart(index) {
+        const updatedCart = [...cartItem];
+        updatedCart.splice(index, 1);
+        setCartItem(updatedCart);
+    }
+
     return (
         <div className="container kantumruy">
             <div className="main-window">
@@ -57,7 +64,7 @@ export default function Main() {
                     CartItems={cartItem.length}
                 />
                 <div className="underNavbar" />
-                {view === "cart" && <Cart CartItems={cartItem} currencyExchange={currencyExchange} />}
+                {view === "cart" && <Cart CartItems={cartItem} currencyExchange={currencyExchange} RemoveItemFromCart={RemoveItemFromCart} />}
                 {view === "search" && <SearchResult
                     navigateToView={navigateToView}
                     currencyExchange={currencyExchange}
@@ -75,7 +82,7 @@ export default function Main() {
                 )}
                 {view === "id" && (
                     <>
-                        <SingleItem currencyExchange={currencyExchange} searchId={searchId} AddItemToCart={AddItemToCart}/>
+                        <SingleItem currencyExchange={currencyExchange} searchId={searchId} AddItemToCart={AddItemToCart} />
                     </>
                 )}
             </div>

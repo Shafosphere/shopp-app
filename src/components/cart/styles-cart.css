@@ -35,6 +35,7 @@
     align-items: center;
     justify-content: center;
     font-size: 25px;
+    cursor: pointer;
 }
 
 .cart-content {
@@ -152,6 +153,9 @@
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
+}
+.order-name-deactive{
+    background-color: rgb(235, 235, 235);
 }
 .order-price{
     padding-left: 20px;

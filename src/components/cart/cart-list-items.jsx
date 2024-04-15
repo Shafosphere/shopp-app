@@ -1,12 +1,12 @@
-import { FaCheckSquare, FaRegCheckSquare } from "react-icons/fa";
+import { FaCheckSquare, FaRegSquare  } from "react-icons/fa";
 import { CiTrash } from "react-icons/ci";
-export default function ListItems({CartData, currencyExchange}) {
+export default function ListItems({CartStatus ,CartData, currencyExchange, RemoveItemFromCart, ChangeItemStatus}) {
 
-    function getCartItems(price, brand, description, thumbnail, title) {
+    function getCartItems(price, brand, description, thumbnail, title, index) {
         return (
             <div className="cart-item">
-                <div className="cart-check">
-                    <FaCheckSquare />
+                <div onClick={() => ChangeItemStatus(index)} className="cart-check">
+                    {CartStatus[index]?.Active ? <FaCheckSquare /> : <FaRegSquare  />}
                 </div>
                 <div className="cart-content">
                     <div className="cart-content-top">
@@ -22,13 +22,14 @@ export default function ListItems({CartData, currencyExchange}) {
                                 </div>
 
                                 <div className="check-gift">
-                                    <span className="gift-icon"><FaCheckSquare /></span> <span>Order as a gift</span>
+                                    <span className="gift-icon"><FaCheckSquare /></span>
+                                    <span>Order as a gift</span>
                                 </div>
                             </div>
                         </div>
 
                         <div className="cart-trash">
-                            <CiTrash />
+                            <CiTrash onClick={() => RemoveItemFromCart(index)}/>
                         </div>
                     </div>
                     <div className="cart-content-bot">
@@ -42,7 +43,7 @@ export default function ListItems({CartData, currencyExchange}) {
         <div className="cart-list">
             {CartData.map((item, index) => (
                 <div key={index}>
-                    {getCartItems(item.price, item.brand, item.description, item.thumbnail, item.title)}
+                    {getCartItems(item.price, item.brand, item.description, item.thumbnail, item.title, index)}
                 </div>
             ))}
         </div>

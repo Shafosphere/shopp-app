@@ -1,13 +1,14 @@
-export default function OrderSummary({ currencyExchange, CartData, totalDiscount, totalPrice, updatePrice }) {
+export default function OrderSummary({ currencyExchange, CartData, totalDiscount, totalPrice, CartStatus}) {
 
     function orderItem(index, title, price, discount) {
         let priceDiscountBefore = ((price * (100 + discount)) / 100)
+        let itemClass = CartStatus[index]?.Active ? "order-item" : "order-item order-name-deactive";
         return (
-            <div key={index} className="order-item">
+            <div key={index} className={itemClass}>
                 <div className="order-name">{title}</div>
                 <div className="order-price">
                     <span>normal price</span>
-                    <span className="dot"></span>
+                    {/* <span className="dot"></span> */}
                     <span className="order-price-number">{currencyExchange(priceDiscountBefore)}</span>
                 </div>
                 <div className="order-discount">

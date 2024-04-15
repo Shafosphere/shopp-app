@@ -1,8 +1,12 @@
-export default function OrderSummary({ currencyExchange, CartData, totalDiscount, totalPrice, CartStatus}) {
+export default function OrderSummary({ currencyExchange, CartData, totalDiscount, totalPrice, CartStatus }) {
+    const countActiveItems = () => {
+        return CartStatus.filter(status => status.Active).length;
+    };
 
     function orderItem(index, title, price, discount) {
         let priceDiscountBefore = ((price * (100 + discount)) / 100)
         let itemClass = CartStatus[index]?.Active ? "order-item" : "order-item order-name-deactive";
+
         return (
             <div key={index} className={itemClass}>
                 <div className="order-name">{title}</div>
@@ -27,7 +31,7 @@ export default function OrderSummary({ currencyExchange, CartData, totalDiscount
             <div className="order-summary">
                 <div className="summary-top">
                     <div className="summary-top-items">
-                        <span>TOTAL ({CartData.length} items)</span>
+                        <span>TOTAL ({countActiveItems()} items)</span>
                         <span className="dot"></span>
                         <span>{currencyExchange(totalPrice)}</span>
                     </div>

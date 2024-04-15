@@ -24,6 +24,7 @@
     height: 300px;
     width: 230px;
     object-fit: cover;
+    cursor: pointer;
 }
 .right-search{
     width: 370px;
@@ -122,6 +123,13 @@
     display: flex;
     align-items: center;
     padding-right: 30px;
+}
+.cart-right:hover{
+    color: orange;
+    cursor: pointer;
+}
+.cart-right:active svg {
+    transform: scale(95%);
 }
 .prices-padding{
     padding-left: 10px;

@@ -10,7 +10,7 @@ import Cart from "../cart/cart"
 
 export default function Main() {
 
-    const [view, setView] = useState("id");
+    const [view, setView] = useState("main");
     const [cartItem, setCartItem] = useState([]);
     const [currency, setCurrency] = useState('$');
     const [searchCategory, setCategory] = useState();
@@ -59,6 +59,7 @@ export default function Main() {
                 <div className="underNavbar" />
                 {view === "cart" && <Cart CartItems={cartItem} currencyExchange={currencyExchange} />}
                 {view === "search" && <SearchResult
+                    navigateToView={navigateToView}
                     currencyExchange={currencyExchange}
                     searchCategory={searchCategory}
                     AddItemToCart={AddItemToCart}
@@ -74,7 +75,7 @@ export default function Main() {
                 )}
                 {view === "id" && (
                     <>
-                        <SingleItem searchId={searchId}></SingleItem>
+                        <SingleItem currencyExchange={currencyExchange} searchId={searchId} AddItemToCart={AddItemToCart}/>
                     </>
                 )}
             </div>

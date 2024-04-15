@@ -4,7 +4,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 import "./styles-search-result.css"
 
-export default function SearchResult({ searchCategory, AddItemToCart, currencyExchange }) {
+export default function SearchResult({ searchCategory, AddItemToCart, currencyExchange, navigateToView}) {
     const [localData, setData] = useState();
 
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function SearchResult({ searchCategory, AddItemToCart, currencyEx
             <div className="container-search">
 
                 {localData.products.map((item, index) => (
-                    <Item AddItemToCart={AddItemToCart} currencyExchange={currencyExchange} key={index} item={item} index={index}/>
+                    <Item navigateToView={navigateToView} AddItemToCart={AddItemToCart} currencyExchange={currencyExchange} key={index} item={item} index={index}/>
                 ))}
 
             </div>
@@ -38,7 +38,7 @@ export default function SearchResult({ searchCategory, AddItemToCart, currencyEx
     }
 }
 
-function Item({ item, AddItemToCart, currencyExchange }) {
+function Item({ item, AddItemToCart, currencyExchange, navigateToView }) {
     let localDiscount = (((item.price * (100 + item.discountPercentage)) / 100))
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
@@ -54,7 +54,7 @@ function Item({ item, AddItemToCart, currencyExchange }) {
     return (
         <div className="item-search">
             <div className="left-search">
-                <img alt="xd" src={item.thumbnail} />
+                <img onClick={() => navigateToView('id', { id: item.id })} alt={item.title} src={item.thumbnail} />
             </div>
             <div className="right-search">
                 <div className="right-search-top">
@@ -64,7 +64,7 @@ function Item({ item, AddItemToCart, currencyExchange }) {
                                 <span>{currencyExchange(item.price)}</span>
                             </div>
                             <div className="prices-left-bot">
-                                <div className="prices-discount prices-padding">{currencyExchange(localDiscount)} $</div>
+                                <div className="prices-discount prices-padding">{currencyExchange(localDiscount)}</div>
                                 <div className="prices-discount-percent">
                                     <span className="percent-top">{item.discountPercentage} %</span>
                                     <span className="percent-bot">lower</span>
@@ -82,7 +82,7 @@ function Item({ item, AddItemToCart, currencyExchange }) {
                     <div className="search-rating prices-padding">
                         <div className="rating-container">
                             <div className="search-stars">{rating(item.rating)}</div>
-                            <div className="rating-number">{item.rating}</div>
+                            <div className="rating-number">{item.rating}/5</div>
                         </div>
                     </div>
                 </div>

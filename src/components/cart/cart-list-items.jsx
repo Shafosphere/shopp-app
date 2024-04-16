@@ -28,8 +28,8 @@ export default function ListItems({CartStatus ,CartData, currencyExchange, Remov
                             </div>
                         </div>
 
-                        <div className="cart-trash">
-                            <CiTrash onClick={() => RemoveItemFromCart(index)}/>
+                        <div onClick={() => RemoveItemFromCart(index)} className="cart-trash">
+                            <CiTrash />
                         </div>
                     </div>
                     <div className="cart-content-bot">

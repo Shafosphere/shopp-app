@@ -6,17 +6,18 @@ import ProductsList from "../products/products"
 import SearchResult from "../search-result/search-result"
 import SingleItem from "../single-item/single-item"
 import SearchEngine from "../search-engine/search-engine"
+import Footer from "../footer/footer"
 import { useState } from "react"
 import Cart from "../cart/cart"
 
 export default function Main() {
 
-    const [view, setView] = useState("main");
-    const [cartItem, setCartItem] = useState([]);
-    const [currency, setCurrency] = useState('$');
-    const [searchCategory, setCategory] = useState();
-    const [searchId, setId] = useState();
-    const [searchTerm, setSearchTerm] = useState('');
+    const [view, setView] = useState("main"); //view
+    const [cartItem, setCartItem] = useState([]); //cart
+    const [currency, setCurrency] = useState('$'); //currency
+    const [searchCategory, setCategory] = useState(); //selected category
+    const [searchId, setId] = useState(); //display item
+    const [searchTerm, setSearchTerm] = useState(''); //navbar input
 
     function navigateToView(view, item) {
         setView(view);
@@ -62,7 +63,7 @@ export default function Main() {
     };
 
     function handleSearch(event) {
-        event.preventDefault(); 
+        event.preventDefault();
         setView("engine")
     };
 
@@ -105,6 +106,7 @@ export default function Main() {
                         <SearchEngine searchTerm={searchTerm} currencyExchange={currencyExchange} searchId={searchId} AddItemToCart={AddItemToCart} />
                     </>
                 )}
+                <Footer></Footer>
             </div>
         </div>
     );

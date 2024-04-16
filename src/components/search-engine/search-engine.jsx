@@ -8,21 +8,22 @@ export default function SearchEngine({ searchTerm, AddItemToCart, currencyExchan
     const [localData, setData] = useState();
 
     useEffect(() => {
+        async function fetchItemData() {
+            try {
+                const localdata = await fetch(
+                    `https://dummyjson.com/products/search?q=${searchTerm}`
+                );
+                const jsonData = await localdata.json();
+                setData(jsonData);
+            }
+            catch (error) {
+                console.error('Error, cannot take data:', error);
+            }
+        }
         fetchItemData();
     }, [searchTerm]);
 
-    async function fetchItemData() {
-        try {
-            const localdata = await fetch(
-                `https://dummyjson.com/products/search?q=${searchTerm}`
-            );
-            const jsonData = await localdata.json();
-            setData(jsonData);
-        }
-        catch (error) {
-            console.error('Error, cannot take data:', error);
-        }
-    }
+
     if (localData) {
         return (
             <div className="container-search">
@@ -40,11 +41,11 @@ function Item({ item, AddItemToCart, currencyExchange, navigateToView }) {
     let localDiscount = (((item.price * (100 + item.discountPercentage)) / 100))
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
-            < AiFillStar />
+            < AiFillStar key={index + 1}/>
         ));
         if (stars.length < 5) {
             stars.push(
-                <AiOutlineStar />
+                <AiOutlineStar key={0}/>
             )
         }
         return <>{stars}</>;

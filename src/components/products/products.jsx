@@ -27,11 +27,11 @@ export default function ProductsList({AddItemToCart, currencyExchange, navigateT
 
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
-            < AiFillStar />
+            < AiFillStar key={index + 1}/>
         ));
         if (stars.length < 5) {
             stars.push(
-                <AiOutlineStar />
+                <AiOutlineStar key={0}/>
             )
         }
         return <>{stars}</>;

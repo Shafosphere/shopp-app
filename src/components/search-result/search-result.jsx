@@ -8,23 +8,23 @@ export default function SearchResult({ searchCategory, AddItemToCart, currencyEx
     const [localData, setData] = useState();
 
     useEffect(() => {
+        async function fetchItemData() {
+            let checkCategory = searchCategory.item;
+            if(checkCategory === undefined){checkCategory = searchCategory}
+            try {
+                const localdata = await fetch(
+                    `https://dummyjson.com/products/category/${checkCategory}`
+                );
+                const jsonData = await localdata.json();
+                setData(jsonData);
+            }
+            catch (error) {
+                console.error('Error, cannot take data:', error);
+            }
+        }
         fetchItemData();
     }, [searchCategory]);
 
-    async function fetchItemData() {
-        let checkCategory = searchCategory.item;
-        if(checkCategory == undefined){checkCategory = searchCategory}
-        try {
-            const localdata = await fetch(
-                `https://dummyjson.com/products/category/${checkCategory}`
-            );
-            const jsonData = await localdata.json();
-            setData(jsonData);
-        }
-        catch (error) {
-            console.error('Error, cannot take data:', error);
-        }
-    }
     if (localData) {
         return (
             <div className="container-search">
@@ -42,11 +42,11 @@ function Item({ item, AddItemToCart, currencyExchange, navigateToView }) {
     let localDiscount = (((item.price * (100 + item.discountPercentage)) / 100))
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
-            < AiFillStar />
+            < AiFillStar key={index + 1}/>
         ));
         if (stars.length < 5) {
             stars.push(
-                <AiOutlineStar />
+                <AiOutlineStar key={0}/>
             )
         }
         return <>{stars}</>;

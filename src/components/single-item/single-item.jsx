@@ -7,30 +7,28 @@ export default function SingleItem({ searchId, currencyExchange, AddItemToCart }
     const [item, setItem] = useState();
 
     useEffect(() => {
+        async function fetchItemData() {
+            try {
+                const localdata = await fetch(
+                    `https://dummyjson.com/products/${searchId}`
+                );
+                const jsonData = await localdata.json();
+                setItem(jsonData);
+            }
+            catch (error) {
+                console.error('Error, cannot take data:', error);
+            }
+        }
         fetchItemData();
-    }, []);
-
-    async function fetchItemData() {
-        try {
-            const localdata = await fetch(
-                `https://dummyjson.com/products/${searchId}`
-            );
-            const jsonData = await localdata.json();
-            setItem(jsonData);
-        }
-        catch (error) {
-            console.error('Error, cannot take data:', error);
-        }
-    }
-
+    }, [searchId]);
 
     function rating(rating) {
         const stars = Array.from({ length: Math.floor(rating) }, (_, index) => (
-            < AiFillStar />
+            < AiFillStar key={index + 1}/>
         ));
         if (stars.length < 5) {
             stars.push(
-                <AiOutlineStar />
+                <AiOutlineStar key={0}/>
             )
         }
         return <>{stars}</>;

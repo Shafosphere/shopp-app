@@ -5,7 +5,7 @@ import { IoTriangle } from "react-icons/io5";
 import { PL, US, GB } from 'country-flag-icons/react/3x2'
 import { useEffect, useState } from "react";
 
-export default function Navbar({ NavigateToView, CartItems, switchCurrency, currency }) {
+export default function Navbar({ searchTerm, handleSearch, handleInputChange, NavigateToView, CartItems, switchCurrency, currency }) {
     const [categoriesData, setCatData] = useState([]);
 
 
@@ -36,7 +36,15 @@ export default function Navbar({ NavigateToView, CartItems, switchCurrency, curr
                     <div onClick={() => NavigateToView('main')} className="title-navbar">SHOPP APP</div>
                     {/* input */}
                     <div className="input-navbar">
-                        <input className="input" type="text" placeholder="I want..." />
+                        <form onSubmit={handleSearch}>
+                            <input
+                                className="input"
+                                type="text"
+                                placeholder="I want..."
+                                value={searchTerm}
+                                onChange={handleInputChange}
+                            />
+                        </form>
                     </div>
                 </div>
 
@@ -112,9 +120,9 @@ function CurrencyNavbar({ switchCurrency, currency }) {
             'zł': { flagComponent: PL, text: 'PLN / PL' },
             '$': { flagComponent: US, text: 'USD / US' }
         };
-    
+
         const { flagComponent: Flag, text } = currencyDetails[currency] || currencyDetails['$'];
-    
+
         return (
             <div className="currency-top">
                 <Flag className="currency-flag" />

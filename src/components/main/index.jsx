@@ -5,6 +5,7 @@ import ImageCarousel from "../image-carousel/carousel"
 import ProductsList from "../products/products"
 import SearchResult from "../search-result/search-result"
 import SingleItem from "../single-item/single-item"
+import SearchEngine from "../search-engine/search-engine"
 import { useState } from "react"
 import Cart from "../cart/cart"
 
@@ -15,6 +16,8 @@ export default function Main() {
     const [currency, setCurrency] = useState('$');
     const [searchCategory, setCategory] = useState();
     const [searchId, setId] = useState();
+    const [searchTerm, setSearchTerm] = useState('');
+
     function navigateToView(view, item) {
         setView(view);
         if (item && typeof item === 'object') {
@@ -54,10 +57,22 @@ export default function Main() {
         setCartItem(updatedCart);
     }
 
+    function handleInputChange(event) {
+        setSearchTerm(event.target.value);
+    };
+
+    function handleSearch(event) {
+        event.preventDefault(); 
+        setView("engine")
+    };
+
     return (
         <div className="container kantumruy">
             <div className="main-window">
                 <Navbar
+                    searchTerm={searchTerm}
+                    handleSearch={handleSearch}
+                    handleInputChange={handleInputChange}
                     currency={currency}
                     NavigateToView={navigateToView}
                     switchCurrency={switchCurrency}
@@ -83,6 +98,11 @@ export default function Main() {
                 {view === "id" && (
                     <>
                         <SingleItem currencyExchange={currencyExchange} searchId={searchId} AddItemToCart={AddItemToCart} />
+                    </>
+                )}
+                {view === "engine" && (
+                    <>
+                        <SearchEngine searchTerm={searchTerm} currencyExchange={currencyExchange} searchId={searchId} AddItemToCart={AddItemToCart} />
                     </>
                 )}
             </div>

@@ -1,26 +1,26 @@
 .container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.underNavbar{
-    height: 150px;
-    width: 100%;
-    padding: 0;
-    margin: 0;
+.underNavbar {
+  height: 150px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 .main-window {
-    background-color: white;
-    min-height: 100vh;
-    width: 1200px;
+  background-color: white;
+  min-height: 100vh;
+  width: 1200px;
 
-    flex-direction: column;
-    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  flex-direction: column;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
 }
 
 .kantumruy {
-    font-family: "Kantumruy Pro", sans-serif;
+  font-family: "Kantumruy Pro", sans-serif;
 }

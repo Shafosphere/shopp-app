@@ -1,72 +1,74 @@
-.container-carousel{
-    background-color: wheat;
-    height: 300px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: space-between;
-    
+.container-carousel {
+  background-color: wheat;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
 }
-.slider{
-    height: 250px;
-    margin: auto;
-    position: relative;
-    width: 90%;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    /* background-color: rgb(8, 52, 62); */
+.slider {
+  height: 250px;
+  margin: auto;
+  position: relative;
+  width: 90%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  /* background-color: rgb(8, 52, 62); */
 }
 .slide-track {
-    display: flex;
-    width: calc(250px * 6);
-    animation: scroll 10s linear infinite;
+  display: flex;
+  width: calc(250px * 6);
+  animation: scroll 10s linear infinite;
 }
-.slide-track:hover{
-    animation-play-state: paused;
+.slide-track:hover {
+  animation-play-state: paused;
 }
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100%{
-        transform: translateX(calc(-250px * 2));
-    }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 2));
+  }
 }
 .slide {
-    height: 200px;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    perspective: 100px;
+  height: 200px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  perspective: 100px;
 }
-.slide img{
-    max-height: 100%;
-    transition: transform 0.5s;
+.slide img {
+  max-height: 100%;
+  transition: transform 0.5s;
 }
-.slide :hover{
-    transform: translateZ(20px);
+.slide :hover {
+  transform: translateZ(20px);
 }
 
 .slider::before,
 .slider::after {
-    background: linear-gradient(to right, rgba(255,255,255,1)0%,
-    rgba(255,255,255,0) 100%);
-    content: '';
-    height: 100%;
-    position: absolute;
-    width: 15%;
-    z-index: 2;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 15%;
+  z-index: 2;
 }
 .slider::before {
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
 }
-.slider::after{
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
 }

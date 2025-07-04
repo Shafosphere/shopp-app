@@ -1,223 +1,222 @@
 .container-navbar {
-    width: 1200px;
-    height: 150px;
-    background-color: rgb(8, 52, 62);
-    flex-direction: column;
-  
-    /* Key CSS for the sticky behavior */
-    position: fixed; 
-    top: 0;
-    z-index: 1000; /* Ensures navbar stays on top */
-  }
+  width: 1200px;
+  height: 150px;
+  background-color: rgb(8, 52, 62);
+  flex-direction: column;
 
-.top-navbar {
-    height: 100px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+  /* Key CSS for the sticky behavior */
+  position: fixed;
+  top: 0;
+  z-index: 1000; /* Ensures navbar stays on top */
 }
 
+.top-navbar {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
 
 .title-navbar {
-    color: rgb(255, 255, 255);
-    font-size: 50px;
-    font-weight: 300;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 /* input */
 .input-navbar {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 350px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 350px;
 }
 
 .input {
-    font-size: 20px;
-    padding: 5px 10px;
-    width: 100%;
-    height: 30px;
-    outline: none;
-    background: #FFFFFF;
-    color: #000000;
-    border: 1px solid #ffffff;
-    border-radius: 25px;
-    transition: .3s ease;
+  font-size: 20px;
+  padding: 5px 10px;
+  width: 100%;
+  height: 30px;
+  outline: none;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  transition: 0.3s ease;
 }
 
 .input:focus {
-    background: #ffffff;
-    border: 1px solid #C7C7C7;
-    border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #c7c7c7;
+  border-radius: 10px;
 }
 
 .input::placeholder {
-    color: #DDDDDD;
+  color: #dddddd;
 }
 
 /* currency */
 .currency-navbar {
-    display: flex;
-    flex-direction: column;
-    border-right: 5px solid white;
-    height: 60px;
-    position: relative;
-    padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  border-right: 5px solid white;
+  height: 60px;
+  position: relative;
+  padding-right: 5px;
 }
 
 .currency-top {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: flex-end;
-    gap: 5px;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-end;
+  gap: 5px;
 }
 
 .currency-bot {
-    height: 50%;
-    width: 100%;
-    color: white;
-    cursor: pointer;
+  height: 50%;
+  width: 100%;
+  color: white;
+  cursor: pointer;
 
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .currency-icon {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .currency-flag {
-    height: 20px;
-    width: 30px;
-    align-content: flex-end;
+  height: 20px;
+  width: 30px;
+  align-content: flex-end;
 }
 
 .cart-navbar {
-    color: white;
-    display: flex;
-    font-size: 40px;
-    flex-direction: row;
-    gap: 5px;
-    cursor: pointer;
+  color: white;
+  display: flex;
+  font-size: 40px;
+  flex-direction: row;
+  gap: 5px;
+  cursor: pointer;
 }
-.cart-navbar-icon{
-    height: 40px;
-    width: 40px;
+.cart-navbar-icon {
+  height: 40px;
+  width: 40px;
 }
 .money-navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.title-input-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 20px;
+.title-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .bot-navbar {
-    height: 50px;
-    width: 100%;
-    border-top: 1px solid rgb(255, 255, 255);
-    flex-direction: row;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    font-size: 25px;
+  height: 50px;
+  width: 100%;
+  border-top: 1px solid rgb(255, 255, 255);
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 25px;
 }
-.categories-list{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    text-transform: uppercase;
-    height: 100%;
+.categories-list {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  text-transform: uppercase;
+  height: 100%;
 }
 .categories-list > div {
-    border-right: 1px solid #ffffff;
-    padding: 0 10px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  border-right: 1px solid #ffffff;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .categories-list > div:last-child {
-    border-right: none; 
+  border-right: none;
 }
 .categories-list > div:hover {
-    color: wheat;
-} 
+  color: wheat;
+  cursor: pointer;
+}
 
 .currency-menu {
-    position: absolute;
+  position: absolute;
 
-    top: 80%;
-    width: 200px;
-    left: -60%;
-
+  top: 80%;
+  width: 200px;
+  left: -60%;
 }
-.currency-menu-window{
-    background-color:  rgb(8, 52, 62);
-    display: flex;
-    flex-direction: column;
-    border: solid 1px wheat;
-    gap: 5px;
-    padding: 1rem;
-    width: 125px;
+.currency-menu-window {
+  background-color: rgb(8, 52, 62);
+  display: flex;
+  flex-direction: column;
+  border: solid 1px wheat;
+  gap: 5px;
+  padding: 1rem;
+  width: 125px;
 }
-.currency-menu-items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    cursor: pointer;
+.currency-menu-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  cursor: pointer;
 }
 .currency-text {
-    color: white;
-    width: 75px;
+  color: white;
+  width: 75px;
 }
-.currency-text:hover { 
-    color: wheat;
-} 
+.currency-text:hover {
+  color: wheat;
+}
 
-.categories-navbar{
-    position: relative;
+.categories-navbar {
+  position: relative;
 }
 .category-menu {
-    position: absolute;
-    top: 140%;
-    left: -102px;
-    width: 1200px;
-    height: 300px;
-    background: rgb(8, 52, 62);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    border: solid 1px wheat;
+  position: absolute;
+  top: 140%;
+  left: -102px;
+  width: 1200px;
+  height: 300px;
+  background: rgb(8, 52, 62);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: solid 1px wheat;
 }
-.category-menu-item{
-    border-left: solid 2px wheat;
-    text-transform: uppercase;
-    font-size: 20px;
-    padding: 10px 10px 10px 10px;
-    margin-left: 20px;
+.category-menu-item {
+  border-left: solid 2px wheat;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  margin-left: 20px;
 }
-.category-menu-item:hover{
-    color: wheat;
-    background: rgb(11, 67, 80);
-    cursor: pointer;
+.category-menu-item:hover {
+  color: wheat;
+  background: rgb(11, 67, 80);
+  cursor: pointer;
 }
